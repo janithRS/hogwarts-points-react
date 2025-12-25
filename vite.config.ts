@@ -5,15 +5,19 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: mode === "production" ? "/react-context-hogwarts/" : "/",
-  server: {
-    host: "::",
-    port: 8080,
-  },
-  plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
-    },
-  },
+	// When deploying to GitHub Pages the app is served from
+	// https://<username>.github.io/<repo>/ so set base for production accordingly.
+	base: mode === "production" ? "/hogwarts-points-react/" : "/",
+	server: {
+		host: "::",
+		port: 8080,
+	},
+	plugins: [react(), mode === "development" && componentTagger()].filter(
+		Boolean
+	),
+	resolve: {
+		alias: {
+			"@": path.resolve(__dirname, "./src"),
+		},
+	},
 }));
