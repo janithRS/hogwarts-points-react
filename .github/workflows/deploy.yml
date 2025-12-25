@@ -6,7 +6,8 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  # Grant write to contents so the Pages configuration step can enable Pages if needed
+  contents: write
   pages: write
   id-token: write
 
@@ -35,6 +36,9 @@ jobs:
         run: npm run build
       - name: Setup Pages
         uses: actions/configure-pages@v4
+        with:
+          # If Pages isn't enabled yet for this repository, allow the action to enable it.
+          enablement: true
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
