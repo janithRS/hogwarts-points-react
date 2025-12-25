@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
-
 @layer base {
   :root {
     --background: 222 47% 8%;
@@ -50,8 +48,8 @@
     --glow-gold: 0 0 20px hsl(43 74% 49% / 0.5);
     --glow-soft: 0 0 40px hsl(43 74% 49% / 0.2);
 
-    --font-display: 'Cinzel', serif;
-    --font-body: 'Crimson Text', serif;
+    --font-display: 'Figtree', sans-serif;
+    --font-body: 'Figtree', sans-serif;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
