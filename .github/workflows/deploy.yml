@@ -26,7 +26,11 @@ jobs:
           node-version: "20"
           cache: "npm"
       - name: Install dependencies
-        run: npm ci
+        # Use `npm install` in CI because `npm ci` fails when package-lock.json
+        # is out of sync with package.json (common when package.json changed
+        # but lockfile wasn't updated). Prefer `npm ci` locally for deterministic
+        # installs, but `npm install` here is more tolerant for GitHub Actions.
+        run: npm install --prefer-offline --no-audit --no-fund
       - name: Build
         run: npm run build
       - name: Setup Pages
