@@ -1,6 +1,6 @@
-import React, { createContext, useContext, useState, useCallback, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useCallback, ReactNode } from "react";
 
-export type House = 'gryffindor' | 'slytherin' | 'ravenclaw' | 'hufflepuff';
+export type House = "gryffindor" | "slytherin" | "ravenclaw" | "hufflepuff";
 
 interface HousePoints {
   gryffindor: number;
@@ -13,7 +13,7 @@ interface PointsContextType {
   points: HousePoints;
   addPoints: (house: House, amount: number) => void;
   removePoints: (house: House, amount: number) => void;
-  lastAction: { house: House; type: 'add' | 'remove'; amount: number } | null;
+  lastAction: { house: House; type: "add" | "remove"; amount: number } | null;
 }
 
 const PointsContext = createContext<PointsContextType | undefined>(undefined);
@@ -30,35 +30,33 @@ export const PointsProvider: React.FC<PointsProviderProps> = ({ children }) => {
     hufflepuff: 100,
   });
 
-  const [lastAction, setLastAction] = useState<{ house: House; type: 'add' | 'remove'; amount: number } | null>(null);
+  const [lastAction, setLastAction] = useState<{ house: House; type: "add" | "remove"; amount: number } | null>(null);
 
   const addPoints = useCallback((house: House, amount: number) => {
-    setPoints(prev => ({
+    setPoints((prev) => ({
       ...prev,
       [house]: prev[house] + amount,
     }));
-    setLastAction({ house, type: 'add', amount });
+    setLastAction({ house, type: "add", amount });
   }, []);
 
   const removePoints = useCallback((house: House, amount: number) => {
-    setPoints(prev => ({
+    setPoints((prev) => ({
       ...prev,
       [house]: Math.max(0, prev[house] - amount),
     }));
-    setLastAction({ house, type: 'remove', amount });
+    setLastAction({ house, type: "remove", amount });
   }, []);
 
   return (
-    <PointsContext.Provider value={{ points, addPoints, removePoints, lastAction }}>
-      {children}
-    </PointsContext.Provider>
+    <PointsContext.Provider value={{ points, addPoints, removePoints, lastAction }}>{children}</PointsContext.Provider>
   );
 };
 
 export const usePoints = (): PointsContextType => {
   const context = useContext(PointsContext);
   if (context === undefined) {
-    throw new Error('usePoints must be used within a PointsProvider');
+    throw new Error("usePoints must be used within a PointsProvider");
   }
   return context;
 };
