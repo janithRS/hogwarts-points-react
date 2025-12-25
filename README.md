@@ -40,41 +40,7 @@ npm run preview
 - Tailwind CSS
 - shadcn-ui
 
-## Deploy to GitHub Pages
+## Notes
 
-This repository is configured to deploy to GitHub Pages. The Vite config sets the correct base path for the `hogwarts-points-react` repo and there's a `deploy` script that uses `gh-pages`.
-
-Quick steps to publish:
-
-```bash
-# install dependencies (and the gh-pages package included in devDependencies)
-npm install
-
-# build for production
-npm run build
-
-# publish the `dist/` folder to GitHub Pages
-npm run deploy
-```
-
-Notes:
-
-- Make sure your GitHub repository is `github.com/<your-username>/hogwarts-points-react` (the `homepage` field in `package.json` points to `https://janithRS.github.io/hogwarts-points-react`).
-- Use Node 18+ (or 20 LTS). Older Node versions may fail when running `vite build`.
-- The site will be published to the `gh-pages` branch by the `gh-pages` package. You can also set the Pages source in the repo settings to the `gh-pages` branch if GitHub doesn't switch automatically.
-
-```
-npm install
-
-# build for production
-npm run build
-
-# publish the `dist/` folder to GitHub Pages
-npm run deploy
-```
-
-Notes:
-
-- Make sure your GitHub repository is `github.com/<your-username>/hogwarts-points-react` (the `homepage` field in `package.json` points to `https://janithRS.github.io/hogwarts-points-react`).
-- Use Node 18+ (or 20 LTS). Older Node versions may fail when running `vite build`.
-- The site will be published to the `gh-pages` branch by the `gh-pages` package. You can also set the Pages source in the repo settings to the `gh-pages` branch if GitHub doesn't switch automatically.
+- This project no longer includes GitHub Pages deployment configuration.
+- To deploy elsewhere, use any standard static host (Netlify, Vercel, Surge, etc.) and point it to the `dist/` folder produced by `npm run build`.
